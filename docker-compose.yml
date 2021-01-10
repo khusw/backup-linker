@@ -1,0 +1,63 @@
+version: "3.7"
+services:
+  mysql:
+    image: mysql:8.0.19
+    container_name: mysql
+    ports:
+      - 3306:3306
+    restart: always
+    environment:
+      MYSQL_DATABASE: prisma
+      MYSQL_ROOT_PASSWORD: prisma
+    volumes:
+      - /var/lib/mysql
+  prisma:
+    links:
+      - mysql
+    depends_on:
+      - mysql
+    container_name: prisma
+    ports:
+      - "5555:5555"
+    build:
+      context: ./back/prisma
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_URL: ${MYSQL_URL}
+      MYSQL_DATABASE: prisma
+      MYSQL_ROOT_PASSWORD: prisma
+    volumes:
+      - /app/prisma
+  backend:
+    links:
+      - mysql
+    depends_on:
+      - mysql
+    container_name: backend
+    ports:
+      - "4000:4000"
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_URL: ${MYSQL_URL}
+      FRONTEND_URL: ${FRONTEND_URL}
+    volumes:
+      - ./back:/usr/src/app
+      - ./back/node_modules:/usr/src/app/node_modules
+      - ./back/prisma:/usr/src/app/prisma
+  frontend:
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    tty: "true"
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    command: npm start
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - BACKEND_URL=${BACKEND_URL}
+    volumes:
+      - ./front:/usr/src/app

@@ -1,0 +1,7 @@
+*.xlsx
+.env
+node_modules
+.vscode
+package-lock.json
+archive
+*.txt

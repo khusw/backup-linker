@@ -1,0 +1,40 @@
+{
+  "name": "capstone-back",
+  "version": "1.0.0",
+  "description": "1st semester capstone design project",
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/server.js",
+    "start": "npm run migrate && nodemon --exec babel-node src/server.js",
+    "prisma": "prisma2 studio --preview-feature",
+    "migrate": "npx prisma migrate dev --name init --preview-feature && npx prisma migrate --preview-feature"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://vel1024@bitbucket.org/vel1024/capstone2.git"
+  },
+  "author": "sdy, kms",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/vel1024/capstone2#readme",
+  "dependencies": {
+    "@prisma/client": "^2.0.0",
+    "@sendgrid/mail": "^7.0.1",
+    "bcryptjs": "^2.4.3",
+    "country-data": "0.0.31",
+    "dotenv": "^8.2.0",
+    "graphql-tools": "^4.0.7",
+    "graphql-yoga": "^1.18.3",
+    "jsonwebtoken": "^8.5.1",
+    "merge-graphql-schemas": "^1.7.6",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "twilio": "^3.42.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
+    "@prisma/cli": "^2.0.0-beta.8",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.2"
+  }
+}

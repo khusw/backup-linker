@@ -1,0 +1,54 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x", "darwin"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int       @default(autoincrement()) @id
+  avatarUrl   String?   @default("")
+  username    String
+  email       String    @unique
+  password    String
+  phoneNum    String    @default("") @unique
+  emailSecret String?   @default("")
+  phoneSecret String?   @default("")
+  bio         String?   @default("")
+  rooms       Room[]    @relation(references: [id])
+  messages    Message[]
+  sender      User[]    @relation("SenderReceiver", references: [id])
+  receiver    User[]    @relation("SenderReceiver", references: [id])
+  createdAt   DateTime? @default(now())
+}
+
+model Room {
+  id           Int        @default(autoincrement()) @id
+  name         String     @unique
+  participants User[]     @relation(references: [id])
+  categories   Category[]
+  messages     Message[]
+}
+
+model Category {
+  id       Int       @default(autoincrement()) @id
+  name     String    @default("") @unique
+  room     Room      @relation(fields: [roomId], references: [id])
+  roomId   Int
+  messages Message[]
+}
+
+model Message {
+  id         Int       @default(autoincrement()) @id
+  text       String    @default("")
+  sender     User      @relation(fields: [senderId], references: [id])
+  senderId   Int
+  room       Room      @relation(fields: [roomId], references: [id])
+  roomId     Int
+  createdAt  DateTime? @default(now())
+  category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
+}

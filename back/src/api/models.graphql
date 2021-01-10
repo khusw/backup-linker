@@ -1,0 +1,46 @@
+type User {
+  id: ID!
+  avatarUrl: String
+  username: String!
+  email: String!
+  password: String!
+  phoneNum: String!
+  emailSecret: String
+  phoneSecret: String
+  bio: String
+  rooms: [Room]
+  createdAt: String
+  messages: [Message]
+  sender: [User]
+  receiver: [User]
+}
+
+type Room {
+  id: ID!
+  name: String!
+  participants: [User]
+  categories: [Category]
+  messages: [Message]
+}
+
+type Category {
+  id: ID!
+  name: String
+  room: Room
+  messages: [Message]
+}
+
+type Message {
+  id: ID!
+  text: String!
+  sender: User!
+  room: Room!
+  category: Category
+  createdAt: String
+  updatedAt: String
+}
+
+type AuthPayload {
+  token: String
+  user: User
+}

@@ -1,0 +1,172 @@
+From a40d1b331ec5be474cabb81596b282629cc58ae8 Mon Sep 17 00:00:00 2001
+From: MinsoftK <55948211+MinsoftK@users.noreply.github.com>
+Date: Thu, 23 Apr 2020 21:56:20 +0900
+Subject: [PATCH] make folder for classifing JS, CSS files and correct
+ directory
+
+---
+ front/web/{ => JS}/validation.js           | 1 -
+ front/web/afterlogin.html                  | 4 ++--
+ front/web/loginmain.html                   | 4 ++--
+ front/web/main.html                        | 6 +++---
+ front/web/question.html                    | 4 ++--
+ front/web/{ => service}/whatiskhuchat.html | 0
+ front/web/signinmain.html                  | 6 +++---
+ front/web/{ => style}/style.css            | 0
+ front/web/test.md                          | 4 +++-
+ 9 files changed, 15 insertions(+), 14 deletions(-)
+ rename front/web/{ => JS}/validation.js (99%)
+ rename front/web/{ => service}/whatiskhuchat.html (100%)
+ rename front/web/{ => style}/style.css (100%)
+
+diff --git a/front/web/validation.js b/front/web/JS/validation.js
+similarity index 99%
+rename from front/web/validation.js
+rename to front/web/JS/validation.js
+index 0e5bc9a..b5fd4c0 100644
+--- a/front/web/validation.js
++++ b/front/web/JS/validation.js
+@@ -32,7 +32,6 @@ var Password={
+ }
+ 
+ function checkValidation(self){
+-
+     if(Email.checkEmail() && Password.checkPassword() ){
+       return true;
+     }else return false;
+diff --git a/front/web/afterlogin.html b/front/web/afterlogin.html
+index 3d5960f..78f9399 100644
+--- a/front/web/afterlogin.html
++++ b/front/web/afterlogin.html
+@@ -3,7 +3,7 @@
+ <head>
+ <title>KHU KHU Chat</title>
+ <meta charset="utf-8">
+-<link rel="stylesheet" href="style.css">
++<link rel="stylesheet" href="style/style.css">
+ <style>
+ 
+ </style>
+@@ -16,7 +16,7 @@
+ <div id="grid">
+   <div id="category">
+     <ol class="center">
+-      <li><a href="whatiskhuchat.html" class="saw">What is KHU chat? </a></li>
++      <li><a href="service/whatiskhuchat.html" class="saw">What is KHU chat? </a></li>
+       <li><a href="loginmain.html" class="saw">로그인</a></li>
+       <li><a href="signinmain.html" class="saw">회원가입</a></li>
+       <li><a href="question.html" class="saw">문의사항</a></li>
+diff --git a/front/web/loginmain.html b/front/web/loginmain.html
+index 174986f..4b32b5c 100644
+--- a/front/web/loginmain.html
++++ b/front/web/loginmain.html
+@@ -3,7 +3,7 @@
+ <head>
+ <title>KHU KHU Chat</title>
+ <meta charset="utf-8">
+-<link rel="stylesheet" href="style.css">
++<link rel="stylesheet" href="style/style.css">
+ </head>
+ <body>
+ 
+@@ -12,7 +12,7 @@
+ <div class="media" id="grid">
+   <div id="category">
+     <ol class="center">
+-      <li><a href="whatiskhuchat.html" class="saw">What is KHU chat? </a></li>
++      <li><a href="service/whatiskhuchat.html" class="saw">What is KHU chat? </a></li>
+       <li><a href="loginmain.html" class="saw">로그인</a></li>
+       <li><a href="signinmain.html" class="saw">회원가입</a></li>
+       <li><a href="question.html" class="saw">문의사항</a></li>
+diff --git a/front/web/main.html b/front/web/main.html
+index 773db1a..955c56b 100644
+--- a/front/web/main.html
++++ b/front/web/main.html
+@@ -3,8 +3,8 @@
+ <head>
+ <title>KHU KHU Chat</title>
+ <meta charset="utf-8">
+-<link rel="stylesheet" href="style.css">
+-<script src="validation.js"></script>
++<link rel="stylesheet" href="style/style.css">
++
+ </head>
+ <body>
+ 
+@@ -14,7 +14,7 @@
+ <div id="grid">
+   <div id="category">
+     <ol class="center">
+-      <li><a href="whatiskhuchat.html" class="saw">What is KHU chat? </a></li>
++      <li><a href="service/whatiskhuchat.html" class="saw">What is KHU chat? </a></li>
+       <li><a href="loginmain.html" class="saw">로그인</a></li>
+       <li><a href="signinmain.html" class="saw">회원가입</a></li>
+       <li><a href="question.html" class="saw">문의사항</a></li>
+diff --git a/front/web/question.html b/front/web/question.html
+index 07e5875..5051160 100644
+--- a/front/web/question.html
++++ b/front/web/question.html
+@@ -3,7 +3,7 @@
+ <head>
+ <title>KHU KHU Chat</title>
+ <meta charset="utf-8">
+-<link rel="stylesheet" href="style.css">
++<link rel="stylesheet" href="style/style.css">
+ </head>
+ <body>
+ 
+@@ -13,7 +13,7 @@
+ <div id="grid">
+   <div id="category">
+     <ol class="center">
+-      <li><a href="whatiskhuchat.html" class="saw">What is KHU chat?</a></li>
++      <li><a href="service/whatiskhuchat.html" class="saw">What is KHU chat? </a></li>
+       <li><a href="loginmain.html" class="saw">로그인</a></li>
+       <li><a href="signinmain.html" class="saw">회원가입</a></li>
+       <li><a href="question.html" class="saw">문의사항</a></li>
+diff --git a/front/web/whatiskhuchat.html b/front/web/service/whatiskhuchat.html
+similarity index 100%
+rename from front/web/whatiskhuchat.html
+rename to front/web/service/whatiskhuchat.html
+diff --git a/front/web/signinmain.html b/front/web/signinmain.html
+index 03a12ed..34a15aa 100644
+--- a/front/web/signinmain.html
++++ b/front/web/signinmain.html
+@@ -3,8 +3,8 @@
+ <head>
+ <title>KHU KHU Chat</title>
+ <meta charset="utf-8">
+-<link rel="stylesheet" href="style.css">
+-<script src="validation.js"></script>
++<link rel="stylesheet" href="style/style.css">
++<script src="JS/validation.js"></script>
+ 
+ </head>
+ <body>
+@@ -14,7 +14,7 @@
+ <div class="media" id="grid">
+   <div id="category">
+     <ol class="center">
+-      <li><a href="whatiskhuchat.html" class="saw">What is KHU chat? </a></li>
++      <li><a href="service/whatiskhuchat.html" class="saw">What is KHU chat? </a></li>
+       <li><a href="loginmain.html" class="saw">로그인</a></li>
+       <li><a href="signinmain.html" class="saw">회원가입</a></li>
+       <li><a href="question.html" class="saw">문의사항</a></li>
+diff --git a/front/web/style.css b/front/web/style/style.css
+similarity index 100%
+rename from front/web/style.css
+rename to front/web/style/style.css
+diff --git a/front/web/test.md b/front/web/test.md
+index 9447ef6..2fa325f 100644
+--- a/front/web/test.md
++++ b/front/web/test.md
+@@ -1,3 +1,5 @@
+ # Capstone design
+ 
+-test
++# function을 만들어서 html 페이지 입력 받아오기
++
++#html 이름을 수정할때마다 메인페이지의 모든 이름을 수정해야해서 까다롭다
+-- 
+2.26.0.windows.1
+

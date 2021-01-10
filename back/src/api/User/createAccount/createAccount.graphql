@@ -1,0 +1,11 @@
+type Mutation {
+  createAccount(
+    username: String!
+    email: String!
+    password: String!
+    password2: String!
+    phoneNum: String!
+    bio: String
+    avatarUrl: String
+  ): AuthPayload!
+}
