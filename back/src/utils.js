@@ -42,8 +42,8 @@ export const generateToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET);
 export const createEMessage = (userEmail, emailSecret) => {
   const emailMessage = {
     to: `${userEmail}`,
-    from: "KhuChat@KhuChat.com",
-    subject: "Email from KhuChat",
+    from: "Linker@Linker.com",
+    subject: "Email from Linker",
     html: `We send email for reset your password, enter this key : <b>${emailSecret}</b>`,
   };
   return emailMessage;
