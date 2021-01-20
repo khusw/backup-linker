@@ -9,7 +9,7 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-ENTRYPOINT [ "dockerize", "-wait", "tcp://root:Kpo165ol998@localhost:3306/prisma:3306", "-timeout", "60s" ]
+ENTRYPOINT [ "dockerize", "-wait", "tcp://root:password@localhost:3306/prisma:3306", "-timeout", "60s" ]
 
 COPY package*.json ./
 COPY prisma ./prisma/
